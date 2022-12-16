@@ -1,7 +1,10 @@
-name: HawkScan
 on:
-  push:
-  pull_request:
+  paths:
+  - .github/workflows/hawkscan.yml
+  schedule:
+  #Scan everyday at midnight
+  - cron: '0 0 * * *'
+name: HawkScan
 jobs:
   hawkscan:
     name: HawkScan
