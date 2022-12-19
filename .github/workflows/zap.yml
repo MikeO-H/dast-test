@@ -1,0 +1,21 @@
+name: ZAP
+on:
+  pull_request: {}
+  push:
+    branches:
+      - main
+      - master
+    paths:
+     - .github/workflows/zap.yml
+  schedule:
+  #Scan everyday at midnight
+  - cron: '0 0 * * *'
+jobs:
+  zap_scan:
+    name: zap
+    runs-on: ubuntu-latest
+    steps:
+      - name: ZAP Scan
+        uses: zaproxy/action-full-scan@v0.4.0
+        with:
+          target: 'https://public-firing-range.appspot.com'
